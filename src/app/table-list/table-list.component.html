@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Tables List</h2>
+  
+    <!-- Message de chargement -->
+    <div *ngIf="loading" class="alert alert-info">
+      Loading tables...
+    </div>
+  
+    <!-- Liste des tables -->
+    <table *ngIf="!loading" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Seats</th>
+          <th>Duration</th>
+          <th>Occupied</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let table of tables">
+          <td>{{ table.name }}</td>
+          <td>{{ table.seats }}</td>
+          <td>{{ table.duration }}</td>
+          <td>{{ table.occupied ? 'Yes' : 'No' }}</td>
+          <td>
+            <button (click)="viewDetails(table.id)" class="btn btn-info">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

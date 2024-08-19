@@ -1,0 +1,69 @@
+<div class="container">
+    <h2>Table Details</h2>
+  
+    <!-- Affichage des détails de la table -->
+    <form *ngIf="!loading && table">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="table.name"
+          name="name"
+          class="form-control"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="seats">Seats:</label>
+        <input
+          type="number"
+          id="seats"
+          [(ngModel)]="table.seats"
+          name="seats"
+          class="form-control"
+          disabled
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="duration">Duration:</label>
+        <input
+          type="number"
+          id="duration"
+          [(ngModel)]="table.duration"
+          name="duration"
+          class="form-control"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="occupied">Occupied:</label>
+        <input
+          type="checkbox"
+          id="occupied"
+          [(ngModel)]="table.occupied"
+          name="occupied"
+        />
+      </div>
+  
+      <div class="form-group">
+        <button (click)="save()" class="btn btn-primary">Save</button>
+        <button (click)="delete()" class="btn btn-danger">Delete</button>
+        <a [routerLink]="['/tables']" class="btn btn-secondary">Back to List</a>
+      </div>
+    </form>
+  
+    <!-- Message de chargement -->
+    <div *ngIf="loading" class="alert alert-info">
+      Loading table details...
+    </div>
+  
+    <!-- Message d'erreur si la table n'est pas trouvée -->
+    <div *ngIf="!table && !loading" class="alert alert-danger">
+      Table not found or an error occurred.
+    </div>
+  </div>
+  
